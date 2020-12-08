@@ -41,6 +41,25 @@ function main() {
         makeInstance(new THREE.DodecahedronBufferGeometry(5, 10), 0x333233,  60),
     ];
 
+
+    const loader = new THREE.FontLoader();
+
+    loader.load('https://threejsfundamentals.org/threejs/resources/threejs/fonts/helvetiker_regular.typeface.json', (font) => {
+        const text = 'Jess2';
+        const geometry = new THREE.TextBufferGeometry(text, {
+            font: font,
+            size: 3,
+            height: 1,
+            curveSegments: 12,
+            bevelEnabled: true,
+            bevelThickness: 0.15,
+            bevelSize: 0.3,
+            bevelSegments: 5,
+        })
+        figures.push(makeInstance(geometry, 0xf0f333,  80));
+    });
+
+
     function resizeRendererToDisplaySize(renderer) {
         const canvas = renderer.domElement;
         const pixelRatio = window.devicePixelRatio;
